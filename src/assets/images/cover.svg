@@ -1,0 +1,55 @@
+<svg width="1760" height="860" viewBox="0 0 1760 860" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cover-title cover-desc">
+  <title id="cover-title">Заставка сайта</title>
+  <desc id="cover-desc">Скетч-иллюстрация в стиле книги «Грокаем алгоритмы» — кресло читателя, чашка на столе</desc>
+
+  <!-- Сдвиг всей композиции вниз на 120px — над рамкой остаётся пустое пространство -->
+  <g transform="translate(0, 120)">
+
+    <!-- Рамка-контейнер рисунка -->
+    <g id="frame">
+      <rect x="439.5" y="4.5" width="875" height="588" fill="white" stroke="black" stroke-width="1.5"/>
+    </g>
+
+    <!-- Ландшафт/гора на фоне -->
+    <g id="landscape">
+      <path d="M1225.11 158.829L1314 336.618V592H508.951C585.551 480.487 750.672 320.55 823.835 254.371L823.844 254.363L823.852 254.355L984.803 95.4023L1072.96 45.0967L1225.11 158.829Z" fill="white" stroke="black" stroke-width="1.5"/>
+    </g>
+
+    <!-- Облако -->
+    <g id="cloud">
+      <path d="M498.5 125C498.5 125 541 171.5 560 166C579 160.5 673 166 673 166C673 166 750.775 137.763 734.5 109.5C724.686 92.4565 715 89 688.5 89C662 89 647.5 63.5 647.5 63.5C647.5 63.5 623 53.5 580.5 63.5C538 73.5 565 95.5 560 89C555 82.5 519 89 519 89C519 89 498.5 100.5 498.5 109.5C498.5 118.5 498.5 125 498.5 125Z" fill="white" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Крыша/декоративный верх -->
+    <g id="roof">
+      <path d="M1005 214L908 174L906.5 173L985 97L1073 46.5L1220.5 157L1163.5 223.5L1065 190L1005 214Z" fill="white" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Столешница (полоса внизу) — нижний слой, кресло перекрывает её -->
+    <g id="ground">
+      <rect x="394.5" y="665.5" width="937" height="26" fill="white" stroke="black" stroke-width="1.5"/>
+    </g>
+
+    <!-- Кресло — поверх столешницы -->
+    <g id="chair">
+      <rect x="638" y="354" width="510" height="260" fill="white" stroke="black" stroke-width="3"/>
+      <rect x="633.5" y="609.5" width="519" height="23" rx="8.5" fill="white" stroke="black" stroke-width="1.5"/>
+      <path d="M806 735V550C806 550 806 535.5 833.5 507C861 478.5 932 479.5 956.5 507C981 534.5 980 550 980 550V735" fill="white" stroke="black" stroke-width="1.5"/>
+    </g>
+
+    <!-- Чашка: ручка (path) ПОД корпусом (rect) -->
+    <g id="cup">
+      <path d="M1240 623C1248.23 623 1255 629.885 1255 638.5C1255 647.115 1248.23 654 1240 654C1231.77 654 1225 647.115 1225 638.5C1225 629.885 1231.77 623 1240 623Z" fill="white" stroke="black" stroke-width="4"/>
+      <rect x="1201.5" y="609.5" width="43" height="56" fill="white" stroke="black" stroke-width="1.5"/>
+    </g>
+
+    <!-- Подписи/плашки слева -->
+    <g id="labels">
+      <rect x="424.5" y="595.5" width="192" height="32" fill="white" stroke="black" stroke-width="1.5"/>
+      <rect x="417.5" y="509.5" width="209" height="49" fill="white" stroke="black" stroke-width="1.5"/>
+      <rect x="417.5" y="628.5" width="207" height="36" fill="white" stroke="black" stroke-width="1.5"/>
+      <rect x="434.5" y="559.5" width="182" height="35" fill="white" stroke="black" stroke-width="1.5"/>
+    </g>
+
+  </g>
+</svg>

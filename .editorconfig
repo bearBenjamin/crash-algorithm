@@ -1,0 +1,60 @@
+# .editorconfig
+# Описание: https://editorconfig.org/
+# Поддерживается всеми主流 IDE: VS Code, WebStorm, Sublime, Vim, Emacs.
+# В VS Code нужно установить расширение "EditorConfig for VS Code".
+
+root = true
+
+# ──────────────────────────────────────────────────────────
+# Базовые правила для всех файлов
+# ──────────────────────────────────────────────────────────
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# ──────────────────────────────────────────────────────────
+# Языки с нестандартными требованиями
+# ──────────────────────────────────────────────────────────
+
+# Markdown — НЕ трогаем trailing whitespace.
+# Два пробела в конце строки = принудительный перенос <br>.
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# YAML — строгий стандарт: пробелы, не табы.
+# indent_size 2 — общепринято (GitHub Actions, docker-compose и т.д.)
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# JSON — пробелы, 2 (npm/Prettier convention)
+[*.json]
+indent_style = space
+indent_size = 2
+
+# JSONC (json с комментариями — tsconfig, jsconfig)
+[*.jsonc]
+indent_style = space
+indent_size = 2
+
+# Shell-скрипты — для совместимости с bash/sh
+[*.sh]
+indent_style = space
+indent_size = 2
+
+# Makefile — табы обязательны (Make требует tab перед recipe)
+[Makefile]
+indent_style = tab
+indent_size = tab
+
+# ──────────────────────────────────────────────────────────
+# Без расширения — конфиг-файлы инструментов
+# ──────────────────────────────────────────────────────────
+[{.editorconfig,.gitattributes,.gitignore,.npmrc,.prettierignore,.eslintignore}]
+indent_style = space
+indent_size = 2

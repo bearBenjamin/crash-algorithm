@@ -1,0 +1,10 @@
+# Husky v9 pre-commit hook
+# Запускается автоматически перед каждым `git commit`
+# Файл должен быть исполняемым: chmod +x .husky/pre-commit
+# (husky init сделает это автоматически при установке)
+
+# 1. Проверка типов по всему проекту (быстро, инкрементально через tsBuildInfo)
+npm run typecheck
+
+# 2. lint-staged — eslint + prettier только для изменённых файлов
+npx lint-staged

@@ -1,0 +1,13 @@
+//- ============================================================
+//- _header.pug — partial шапки сайта
+//- ============================================================
+//- Одинаковая на всех страницах. Если нужно подсветить активный
+//- пункт меню — используй переменную `currentSection`.
+
+header.page__header
+  nav.page__nav
+    a.page__logo(href="index.html") Грокаем алгоритмы
+
+    ul.page__menu(role="list")
+      li: a.page__menu-link(href="index.html" aria-current=(currentSection === 'home' ? 'page' : undefined)) Главная
+      li: a.page__menu-link(href="algorithms/binary-search.html" aria-current=(currentSection === 'binary-search' ? 'page' : undefined)) Демо

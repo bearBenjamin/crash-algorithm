@@ -1,0 +1,74 @@
+# Автоматический деплой на GitHub Pages при push в main
+#
+# Требования:
+# 1. В репозитории: Settings → Pages → Source = "GitHub Actions"
+# 2. В репозитории: Settings → Actions → General → Workflow permissions = "Read and write"
+#
+# После первого пуша сайт будет доступен по адресу:
+# https://<username>.github.io/<repo-name>/
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # ручной запуск из вкладки Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Не запускать параллельные деплои — новый ждёт завершения старого
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        # Проверка типов по всему проекту до сборки.
+        # Если есть type-ошибки — деплой прерывается.
+        run: npm run typecheck
+
+      - name: Lint
+        # Линтер без --fix (не модифицируем код в CI)
+        run: npx eslint .
+
+      - name: Build
+        # webpack.config.js использует publicPath: 'auto' —
+        # пути резолвятся относительно HTML на любой платформе, env не нужны.
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

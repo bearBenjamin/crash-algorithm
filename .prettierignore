@@ -1,0 +1,11 @@
+# Файлы/директории, которые Prettier не трогает
+# Дополняй по мере роста проекта
+
+dist/
+node_modules/
+.husky/
+*.min.js
+*.min.css
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

@@ -1,0 +1,62 @@
+//- ============================================================
+//- intro.pug — страница-заставка
+//- ============================================================
+//- На заставке layout не нужен: нет ни шапки, ни футера,
+//- ни общего меню. Полноэкранная иллюстрация + заголовок + кнопка.
+//- Поэтому НЕ extends _layout — пишем прямо.
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="description" content="Заставка — Грокаем алгоритмы. Личный блог о чтении книг по алгоритмам с визуализациями.")
+    title Грокаем алгоритмы — заставка
+
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="")
+    link(href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet")
+
+    link(rel="stylesheet" href=require("@styles/main.scss"))
+
+  body.intro
+    main.intro__stage(data-splash="root")
+
+      .intro__art(data-splash="art")
+        svg.intro__svg(
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1760 860"
+          width="1760"
+          height="860"
+          fill="none"
+          aria-labelledby="cover-title cover-desc"
+          role="img"
+        )
+          title#cover-title Заставка сайта
+          desc#cover-desc Скетч-иллюстрация в стиле книги «Грокаем алгоритмы» — кресло читателя, чашка на столе
+
+          g(transform="translate(0 120)")
+            path#frame(fill="#fff" stroke="#000" stroke-width="1.5" d="M439.5 4.5h875v588h-875z")
+            path#landscape(fill="#fff" stroke="#000" stroke-width="1.5" d="M1225.11 158.829 1314 336.618V592H508.951c76.6-111.513 241.721-271.45 314.884-337.629l.009-.008.008-.008L984.803 95.402l88.157-50.305z")
+            path#cloud(fill="#fff" stroke="#000" stroke-linecap="round" stroke-width="1.5" d="M498.5 125s42.5 46.5 61.5 41 113 0 113 0 77.775-28.237 61.5-56.5C724.686 92.457 715 89 688.5 89s-41-25.5-41-25.5-24.5-10-67 0S565 95.5 560 89s-41 0-41 0-20.5 11.5-20.5 20.5z")
+            path#roof(fill="#fff" stroke="#000" stroke-linecap="round" stroke-width="1.5" d="m1005 214-97-40-1.5-1L985 97l88-50.5L1220.5 157l-57 66.5L1065 190z")
+            path#ground(fill="#fff" stroke="#000" stroke-width="1.5" d="M394.5 665.5h937v26h-937z")
+            g#chair(fill="#fff" stroke="#000")
+              path(stroke-width="3" d="M638 354h510v260H638z")
+              rect(width="519" height="23" x="633.5" y="609.5" stroke-width="1.5" rx="8.5")
+              path(stroke-width="1.5" d="M806 735V550s0-14.5 27.5-43 98.5-27.5 123 0 23.5 43 23.5 43v185")
+            g#cup(fill="#fff" stroke="#000")
+              path(stroke-width="4" d="M1240 623c8.23 0 15 6.885 15 15.5s-6.77 15.5-15 15.5-15-6.885-15-15.5 6.77-15.5 15-15.5Z")
+              path(stroke-width="1.5" d="M1201.5 609.5h43v56h-43z")
+            g#labels(fill="#fff" stroke="#000" stroke-width="1.5")
+              path(d="M424.5 595.5h192v32h-192zM417.5 509.5h209v49h-209zM417.5 628.5h207v36h-207zM434.5 559.5h182v35h-182z")
+
+      h1.intro__title(data-splash="title") Грокаем алгоритмы
+      p.intro__subtitle(data-splash="subtitle") Личный блог о чтении книг по алгоритмам с визуализациями
+
+      a.intro__enter(href="index.html" data-splash="enter")
+        span Войти
+
+      button.intro__skip(type="button" data-splash="skip" aria-label="Пропустить заставку") Пропустить
+
+    script(src=require("@scripts/intro.ts") defer)

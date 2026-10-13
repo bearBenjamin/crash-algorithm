@@ -1,0 +1,35 @@
+//- ============================================================
+//- index.pug — главная страница блога
+//- ============================================================
+//- Заставку показываем через гард-скрипт в <head>:
+//- если пользователь не видел её в этой сессии → редирект на intro.html.
+
+extends _layout
+
+block head
+  //- Гард-редирект на заставку. Синхронный скрипт в <head>,
+  //- отрабатывает до рендера body — без мигания контента.
+  script.
+    (function () {
+      try {
+        if (sessionStorage.getItem('splash-seen') !== '1') {
+          sessionStorage.setItem('splash-seen', '1');
+          window.location.replace('intro.html');
+        }
+      } catch (e) {
+        // sessionStorage недоступен (private mode, и т.д.) —
+        // показываем главную без заставки, не блокируем сайт.
+      }
+    })();
+
+block content
+  .home__stage
+    h1.home__title Грокаем алгоритмы
+    p.home__subtitle Личный блог о чтении книг по алгоритмам с визуализациями
+
+    p.home__placeholder Скоро тут появится список книг и статей.
+
+    a.home__back-intro(href="intro.html") Посмотреть заставку ещё раз
+
+    ul.home__algorithms-list(role="list")
+      li: a.home__algorithm-link(href="algorithms/binary-search.html") Бинарный поиск (демо)

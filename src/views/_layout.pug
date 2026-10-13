@@ -1,0 +1,45 @@
+//- ============================================================
+//- _layout.pug — общий каркас для всех страниц сайта
+//- ============================================================
+//- Использование в страницах:
+//-   extends _layout
+//-   block content
+//-     h1 Моя страница
+//-
+//- Если страница лежит во вложенной папке (src/views/algorithms/foo.pug),
+//- путь к лейауту: extends ../_layout
+//-
+//- Переменные по умолчанию (можно переопределить в странице):
+//-   - title       — для <title> и SEO
+//-   - description — для meta description
+//-   - bodyClass   — CSS-класс на <body> (для блока .intro, .home, и т.д.)
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="description" content=description || "Личный блог о чтении книг по алгоритмам с визуализациями. Сейчас: «Грокаем алгоритмы».")
+
+    title= title || "Грокаем алгоритмы"
+
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="")
+    link(href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet")
+
+    //- Стили — алиас @styles, путь не зависит от вложенности страницы
+    link(rel="stylesheet" href=require("@styles/main.scss"))
+
+    //- Дополнительные стили или head-скрипты для конкретной страницы
+    block head
+
+  body(class=bodyClass || "page")
+    include _header
+
+    main.page__main
+      block content
+
+    include _footer
+
+    //- Дополнительные скрипты страницы — добавляются в конец body
+    block scripts

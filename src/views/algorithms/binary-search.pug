@@ -1,0 +1,54 @@
+//- ============================================================
+//- algorithms/binary-search.pug — демо-страница алгоритма
+//- ============================================================
+//- Это пример-скелет. Копируй эту страницу для новых алгоритмов:
+//-   1. Скопируй файл: src/views/algorithms/binary-search.pug → my-algo.pug
+//-   2. Создай TS: src/ts/algorithms/my-algo.ts
+//-   3. Создай SCSS: src/scss/blocks/algorithms/my-algo.scss
+//-   4. Подключи SCSS в main.scss
+//-   5. Все — страница /algorithms/my-algo.html готова, без правки webpack.
+
+extends ../_layout
+
+block head
+  //- Переменные для <head>
+  //- NOTE: переменные Pug нужно задавать ДО extends, через block head или
+  //- прямо в head-блоке. Поэтому тут — отдельный блок с meta-тегами.
+
+block content
+  article.algorithm(data-algorithm="binary-search")
+    header.algorithm__header
+      a.algorithm__back(href="../index.html") ← Назад к списку
+      h1.algorithm__title Бинарный поиск
+      p.algorithm__lead
+        | Демонстрация работы бинарного поиска — алгоритма поиска O(log n),
+        | который я читаю в книге «Грокаем алгоритмы» (глава 1).
+
+    section.algorithm__canvas-wrap
+      //- Canvas для визуализации — D3.js / Rough.js рисуют сюда
+      canvas.algorithm__canvas(
+        data-algorithm="binary-search-canvas"
+        width="800"
+        height="400"
+        aria-label="Визуализация бинарного поиска по отсортированному массиву"
+      )
+
+    section.algorithm__controls
+      button.algorithm__btn(type="button" data-action="restart") Заново
+      label.algorithm__field
+        | Искомое число:
+        input.algorithm__input(
+          type="number"
+          min="1"
+          max="100"
+          value="42"
+          data-input="target"
+        )
+
+    aside.algorithm__notes
+      h2 Заметки из книги
+      p Бинарный поиск работает только с отсортированным массивом. На каждом шаге мы отбрасываем половину вариантов — поэтому логарифмическая сложность.
+
+block scripts
+  //- Скрипт конкретной страницы — через алиас, путь не зависит от вложенности
+  script(src=require("@scripts/algorithms/binary-search.ts") defer)

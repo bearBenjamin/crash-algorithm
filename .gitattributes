@@ -1,0 +1,75 @@
+# .gitattributes
+# Каждое сохранение в Git нормализует EOL по этим правилам.
+# Подробности: https://git-scm.com/docs/gitattributes
+
+# ──────────────────────────────────────────────────────────
+# Базовое правило: Git сам определяет текст/бинарник.
+# Для текста — нормализует EOL в LF при commit.
+# ──────────────────────────────────────────────────────────
+* text=auto eol=lf
+
+# ──────────────────────────────────────────────────────────
+# Текстовые файлы — явно LF (на случай, если авто-детект
+# ошибётся или кто-то откроет файл в Windows-редакторе с CRLF)
+# ──────────────────────────────────────────────────────────
+*.js     text eol=lf
+*.ts     text eol=lf
+*.mjs    text eol=lf
+*.cjs    text eol=lf
+*.json   text eol=lf
+*.jsonc  text eol=lf
+*.pug    text eol=lf
+*.html   text eol=lf
+*.css    text eol=lf
+*.scss   text eol=lf
+*.sass   text eol=lf
+*.md     text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.svg    text eol=lf     # ← SVG это XML, текстовый формат
+*.sh     text eol=lf
+*.env    text eol=lf
+
+# Lock-файлы — строго LF (иначе diff-шум от разных ОС)
+*.lock   text eol=lf
+package-lock.json text eol=lf
+pnpm-lock.yaml   text eol=lf
+yarn.lock        text eol=lf
+
+# Конфиг-файлы инструментов (без расширения)
+.editorconfig   text eol=lf
+.gitattributes  text eol=lf
+.gitignore      text eol=lf
+.npmrc          text eol=lf
+.prettierignore text eol=lf
+.eslintignore   text eol=lf
+
+# ──────────────────────────────────────────────────────────
+# Бинарные файлы — Git не трогает их содержимое.
+# Без явной метки `* text=auto` иногда ошибочно определяет
+# PNG как текст (особенно после некоторых редакторов).
+# ──────────────────────────────────────────────────────────
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.bmp    binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.eot    binary
+*.pdf    binary
+*.mp4    binary
+*.webm   binary
+*.zip    binary
+
+# ──────────────────────────────────────────────────────────
+# Деплой на GitHub Pages — артефакты не коммитим,
+# но если кто-то случайно добавил,-export-ignore исключит
+# из архивов (например, `git archive`).
+# ──────────────────────────────────────────────────────────
+dist/    export-ignore
+node_modules/ export-ignore

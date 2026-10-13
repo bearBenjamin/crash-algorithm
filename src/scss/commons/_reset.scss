@@ -1,0 +1,78 @@
+// ============================================================
+// _reset.scss — современный CSS reset
+// ============================================================
+// Используем «A Modern CSS Reset» от Andy Bell с правками.
+// Не как normalize.css — reset более радикальный и предсказуемый.
+// Подробнее: https://andy-bell.co.uk/a-more-modern-css-reset/
+
+// Убираем дефолтные отступы
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Улучшение шрифтового рендеринга
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Body растягивается на всю высоту
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.5;
+}
+
+// Списки без декорации
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+// Изображения и медиа — никогда не выходят за контейнер
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// SVG не должен иметь паразитные пробелы под собой (inline-block)
+svg {
+  vertical-align: middle;
+}
+
+// Инпуты и кнопки наследуют шрифт
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+// Текстовые поля без дефолтных стилей браузера
+textarea {
+  resize: vertical;
+}
+
+// Убираем анимации для пользователей с prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
