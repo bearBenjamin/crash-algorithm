@@ -8,18 +8,18 @@
 
     /* Строгость */
     "strict": true,
-    "noImplicitOverride": true,         // override@method — явно, иначе ошибка
-    "noUnusedLocals": true,              // неиспользуемые переменные — ошибка
-    "noUnusedParameters": true,          // неиспользуемые параметры — ошибка
-    "noFallthroughCasesInSwitch": true,  // забытый break в switch — ошибка
+    "noImplicitOverride": true, // override@method — явно, иначе ошибка
+    "noUnusedLocals": true, // неиспользуемые переменные — ошибка
+    "noUnusedParameters": true, // неиспользуемые параметры — ошибка
+    "noFallthroughCasesInSwitch": true, // забытый break в switch — ошибка
     "exactOptionalPropertyTypes": true, // { x?: T } не принимает { x: undefined }
 
     /* Совместимость с модулями */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,           // import data from './data.json'
-    "isolatedModules": true,             // обязательно для ts-loader / webpack
-    "verbatimModuleSyntax": true,        // import type { Foo } не попадёт в JS-бандл
+    "resolveJsonModule": true, // import data from './data.json'
+    "isolatedModules": true, // обязательно для ts-loader / webpack
+    "verbatimModuleSyntax": true, // import type { Foo } не попадёт в JS-бандл
 
     /* Сборка */
     // noEmit НЕ ставим — ts-loader должен эммитить JS для webpack.
