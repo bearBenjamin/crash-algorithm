@@ -1,0 +1,27 @@
+@use '../commons/var' as *;
+
+.home-header {
+  width: 100%;
+  border-bottom: 2px solid $color-button-main;
+  background-color: transparent;
+}
+
+.home-header__nav {
+  max-width: 1920px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.home-header__logo {
+  display: block;
+  margin-left: auto;
+  padding-right: 1.5rem;
+}
+
+.home-header__menu-item {
+  display: block;
+  padding: 1.5rem;
+  font-family: $font-hand;
+  font-size: 1.5rem;
+}

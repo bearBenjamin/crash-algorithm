@@ -13,15 +13,16 @@
 //-   - title       — для <title> и SEO
 //-   - description — для meta description
 //-   - bodyClass   — CSS-класс на <body> (для блока .intro, .home, и т.д.)
+block vars
 
 doctype html
-html(lang="ru")
+html(class="page" lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(name="description" content=description || "Личный блог о чтении книг по алгоритмам с визуализациями. Сейчас: «Грокаем алгоритмы».")
+    meta(name="description" content=description || "Личный блог о чтении книг по алгоритмам с визуализациями.")
 
-    title= title || "Грокаем алгоритмы"
+    title= title || "Как я грокал код"
 
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin="")
@@ -31,12 +32,13 @@ html(lang="ru")
     link(rel="stylesheet" href=require("@styles/main.scss"))
 
     //- Дополнительные стили или head-скрипты для конкретной страницы
-    block head
+    //- block head
 
-  body(class=bodyClass || "page")
-    include _header
+  body(class="page__body")
+    block init
+    block header
 
-    main.page__main
+    main(class=`${mainClass}`)
       block content
 
     include _footer

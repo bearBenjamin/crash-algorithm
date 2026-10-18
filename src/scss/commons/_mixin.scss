@@ -1,0 +1,21 @@
+@use 'var' as *;
+
+$breakpoints: (
+  'laptop': $screen-laptop,
+  'tablet-landscape': $screen-tablet-landscape,
+  'tablet': $screen-tablet,
+  'mobile': $screen-mobile,
+);
+
+@mixin respond-below($device) {
+  @if map-has-key($breakpoints, $device) {
+    $value: map-get($breakpoints, $device);
+
+    @media (max-width: $value) {
+      @content;
+    }
+  }
+}
+
+// @use 'mixin'as config;
+// @include config.respond-below('tablet') { стили для брейкпойнта }

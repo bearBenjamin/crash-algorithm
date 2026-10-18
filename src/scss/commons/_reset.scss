@@ -31,8 +31,8 @@ body {
 }
 
 // Списки без декорации
-ul[role='list'],
-ol[role='list'] {
+ul,
+ol {
   list-style: none;
 }
 

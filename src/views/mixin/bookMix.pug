@@ -1,0 +1,11 @@
+mixin bookList (books)
+ ul.stage__book-list
+    each book in books
+      li.stage__book-item
+        div.stage__book-wrapper
+          span.stage__book-name= book.name
+          span.stage__book-author= book.author
+        ul.stage__book-item-list
+          each item in book.list
+            li.stage__book-chapter
+              a.stage__book-chapter-link(href="#")= item

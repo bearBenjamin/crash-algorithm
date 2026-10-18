@@ -1,0 +1,28 @@
+$color-accent: #1a1a1a;
+$color-border: #cccccc;
+
+// фон
+$color-paper: #fbfbf9;
+$paper-texture: url('data:image/svg+xml,%3Csvg xmlns=%27http://w3.org width=%27300%27 height=%27300%27%3E%3Cfilter id=%27p%27%3E%3CfeTurbulence type=%27turbulence%27 baseFrequency=%270.02 0.4%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 0.94 0 0 0 0 0.9 0 0 0 0 0.83 0 0 0 0.08 0%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23p)%27/%3E%3C/svg%3E');
+
+$color-text-base: #1d1d1d;
+$color-text-muted: #555555;
+
+$color-button-main: #1a1a1a;
+$color-button-secondary: #ffffff;
+
+// Шрифты
+$font-hand: 'Patrick Hand', cursive; // скетч-шрифт под стиль иллюстрации
+$font-mono: 'JetBrains Mono', monospace; // для блоков с кодом
+
+//Экраны
+$screen-laptop: 1440px;
+$screen-tablet-landscape: 1024px;
+$screen-tablet: 768px;
+$screen-mobile: 480px;
+
+// Отступы
+$space-small: 0.5rem; // Мелкие зазоры (между названием книги и автором)
+$space-medium: 1rem; // Стандартные поля (между главами в столбике)
+$space-large: 1.75rem; // Средние отступы (зазор для выезжающего списка)
+$space-xlarge: 3rem;

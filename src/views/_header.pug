@@ -1,13 +1,22 @@
-//- ============================================================
-//- _header.pug — partial шапки сайта
-//- ============================================================
-//- Одинаковая на всех страницах. Если нужно подсветить активный
-//- пункт меню — используй переменную `currentSection`.
+include _header-data
 
-header.page__header
-  nav.page__nav
-    a.page__logo(href="index.html") Грокаем алгоритмы
+-
+  var currentPage = 'home'
+  var baseClass = 'main-header';
 
-    ul.page__menu(role="list")
-      li: a.page__menu-link(href="index.html" aria-current=(currentSection === 'home' ? 'page' : undefined)) Главная
-      li: a.page__menu-link(href="algorithms/binary-search.html" aria-current=(currentSection === 'binary-search' ? 'page' : undefined)) Демо
+mixin pageHeader(items)
+  nav(class=`${baseClass}__nav`)
+    a(class=`${baseClass}__logo`)(href="index.html") theBearBenjamin
+    ul(class=`${baseClass}__menu`)
+      each item in items
+        if currentPage === item.id
+          li
+            span(class=`${baseClass}__menu-link`)= item.text
+        else
+          li
+            a(class=`${baseClass}__menu-link`)(href=`${item.href}`)= item.text
+
+
+
+header(class=`${baseClass}`)
+  +pageHeader(menuItems)

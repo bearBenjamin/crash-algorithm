@@ -86,7 +86,7 @@ module.exports = (env, argv) => {
             loader: 'ts-loader',
             options: {
               transpileOnly: true,
-              onlyCompileBundledFiles: true,
+              // onlyCompileBundledFiles: true,
             },
           },
           exclude: /node_modules/,
@@ -113,6 +113,9 @@ module.exports = (env, argv) => {
         pretty: !isProd,
         css: {
           filename: 'css/[name].[contenthash:8].css',
+        },
+        js: {
+          filename: 'js/[name].[contenthash:8].js',
         },
       }),
     ],

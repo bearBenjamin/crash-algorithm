@@ -1,0 +1,95 @@
+@use '../commons/var' as *;
+
+stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-medium;
+  text-align: center;
+}
+
+.stage__wrapper {
+  width: 100%;
+  max-width: 1920px;
+}
+
+.stage__title {
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.stage__subtitle {
+  margin-bottom: 3rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  color: $color-text-muted;
+}
+
+.stage__book-list {
+  width: max-content;
+  min-width: 180px;
+}
+
+.stage__book-item {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.stage__book-wrapper {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.stage__book-name {
+  margin-right: $space-small;
+  font-size: 2rem;
+}
+
+.stage__book-author {
+  font-size: 1.8rem;
+  color: $color-text-muted;
+}
+
+.stage__book-item--is-open .stage__book-item-list {
+  width: max-content;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.stage__book-item-list {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 10;
+
+  width: max-content;
+  margin-left: 50px;
+  text-align: left;
+
+  transform: translateX(-30px);
+
+  /* Настраиваем плавность для прозрачности, видимости и движения */
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.stage__book-chapter {
+  margin-bottom: 10px;
+}
+
+.stage__book-chapter-link {
+  display: block;
+  width: 100%;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+.stage__book-chapter-link:hover {
+  text-decoration: underline;
+}
