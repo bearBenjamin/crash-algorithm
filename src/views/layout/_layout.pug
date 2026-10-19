@@ -1,18 +1,3 @@
-//- ============================================================
-//- _layout.pug — общий каркас для всех страниц сайта
-//- ============================================================
-//- Использование в страницах:
-//-   extends _layout
-//-   block content
-//-     h1 Моя страница
-//-
-//- Если страница лежит во вложенной папке (src/views/algorithms/foo.pug),
-//- путь к лейауту: extends ../_layout
-//-
-//- Переменные по умолчанию (можно переопределить в странице):
-//-   - title       — для <title> и SEO
-//-   - description — для meta description
-//-   - bodyClass   — CSS-класс на <body> (для блока .intro, .home, и т.д.)
 block vars
 
 doctype html
@@ -41,7 +26,7 @@ html(class="page" lang="ru")
     main(class=`${mainClass}`)
       block content
 
-    include _footer
+    include ../modules/_footer
 
     //- Дополнительные скрипты страницы — добавляются в конец body
     block scripts

@@ -9,3 +9,7 @@ node_modules/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# PUG-файлы — Prettier их не поддерживает без плагина @prettier/plugin-pug.
+# Если захочешь форматировать PUG — установи плагин и убери эту строку.
+*.pug

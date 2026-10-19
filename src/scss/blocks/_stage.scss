@@ -1,10 +1,11 @@
 @use '../commons/var' as *;
 
-stage {
+.stage {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: $space-medium;
   text-align: center;
 }
@@ -12,22 +13,32 @@ stage {
 .stage__wrapper {
   width: 100%;
   max-width: 1920px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
 }
 
 .stage__title {
+  max-width: 640px;
+  margin-left: 240px;
   margin-bottom: 1.5rem;
   font-size: clamp(2.5rem, 6vw, 4rem);
+  text-align: left;
 }
 
 .stage__subtitle {
+  max-width: 880px;
+  margin-left: 240px;
   margin-bottom: 3rem;
   font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   color: $color-text-muted;
+  text-align: left;
 }
 
 .stage__book-list {
   width: max-content;
   min-width: 180px;
+  margin-left: 260px;
+  text-align: left;
 }
 
 .stage__book-item {
@@ -52,13 +63,21 @@ stage {
 }
 
 .stage__book-item--is-open .stage__book-item-list {
-  width: max-content;
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
+
+  transition:
+    transform 0.5s ease,
+    /* появление — плавно */ opacity 0.5s ease,
+    visibility 0s;
 }
 
 .stage__book-item-list {
+  width: max-content;
+  max-height: 340px;
+  margin-left: 50px;
+  padding-right: 15px;
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -66,17 +85,18 @@ stage {
   left: 100%;
   z-index: 10;
 
-  width: max-content;
-  margin-left: 50px;
-  text-align: left;
-
   transform: translateX(-30px);
 
   /* Настраиваем плавность для прозрачности, видимости и движения */
   transition:
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.5s ease,
-    visibility 0.5s ease;
+    transform 0.4s ease,
+    opacity 0.4s ease,
+    visibility 0s linear 0.4s;
+
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #1a1a1a transparent;
 }
 
 .stage__book-chapter {

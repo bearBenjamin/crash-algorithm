@@ -1,4 +1,4 @@
-include _header-data
+include ../data/_header-data
 
 -
   var currentPage = 'home'
@@ -6,7 +6,7 @@ include _header-data
 
 mixin pageHeader(items)
   nav(class=`${baseClass}__nav`)
-    a(class=`${baseClass}__logo`)(href="index.html") theBearBenjamin
+    a(class=`${baseClass}__logo` href="index.html") theBearBenjamin
     ul(class=`${baseClass}__menu`)
       each item in items
         if currentPage === item.id
@@ -14,7 +14,7 @@ mixin pageHeader(items)
             span(class=`${baseClass}__menu-link`)= item.text
         else
           li
-            a(class=`${baseClass}__menu-link`)(href=`${item.href}`)= item.text
+            a(class=`${baseClass}__menu-link` href=`${item.href}`)= item.text
 
 
 
