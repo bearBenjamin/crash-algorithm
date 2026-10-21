@@ -1,8 +1,9 @@
 import { initBear } from './draw-pircture/bear';
+import { sketchifyIntro } from './draw-pircture/intro';
 
 function main(): void {
   const art = document.querySelector<HTMLElement>('.intro-js');
-  // const picture = art?.querySelector<SVGSVGElement>('.intro__svg-js');
+  const picture = art?.querySelector<SVGSVGElement>('.intro__svg-js');
   const title = art?.querySelector<HTMLElement>('.intro__title-js');
   const subtitle = art?.querySelector<HTMLElement>('.intro__subtitle-js');
   const enterBtn = art?.querySelector<HTMLButtonElement>('.intro__enter-js');
@@ -18,6 +19,7 @@ function main(): void {
   //   redirectToHome(art);
   //   return;
   // }
+  sketchifyIntro(picture as SVGSVGElement);
 
   // Хук: кнопка «Войти» — прерывает анимацию и переходит дальше
   enterBtn.addEventListener('click', () => {

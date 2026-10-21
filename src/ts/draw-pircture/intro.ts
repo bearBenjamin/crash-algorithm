@@ -1,13 +1,13 @@
-// import rough from 'roughjs';
+import rough from 'roughjs';
 // import type { RoughSVG } from 'roughjs/bin/svg';
-// import type { Options as RoughOptions } from 'roughjs/bin/core';
+import type { Options as RoughOptions } from 'roughjs/bin/core';
 
-// const BASE_OPTIONS: RoughOptions = {
-//   roughness: 1.8,        // «карандашность» (1-3 — нормальный диапазон)
-//   bowing: 1,             // изгиб линий (1 = default)
-//   seed: 42,              // фиксированный seed — повторяемый результат
-//   disableMultiStroke: true,  // одна линия вместо двух — для будущей анимации
-// };
+const BASE_OPTIONS: RoughOptions = {
+  roughness: 1.8, // «карандашность» (1-3 — нормальный диапазон)
+  bowing: 1, // изгиб линий (1 = default)
+  seed: 42, // фиксированный seed — повторяемый результат
+  disableMultiStroke: true, // одна линия вместо двух — для будущей анимации
+};
 
 // interface color {
 //   baseBlack: string,
@@ -19,64 +19,162 @@
 //   colorPaper: '#fbfbf9'
 // }
 
-// const OUTLINE_ONLY = new Set(['frame', 'landscape', 'cloud', 'roof', 'chair', 'cup-one', 'display']);
-// const OUTLINE_WITH_HACHURE = new Set(['ground', 'display-plate', 'books']);
-// const OUTLINE_WITH_SOLID = new Set(['cup-two']);
+function fillOptionsForClass(className: string): Partial<RoughOptions> {
+  switch (className) {
+    case 'frame': // окно
+      return {
+        fill: 'blue',
+        fillStyle: 'hachure',
+        hachureGap: 1,
+        hachureAngle: 90,
+        fillWeight: 1,
+      };
 
-// const svgIntro = document.querySelector('.intro__svg-js') as SVGSVGElement;
-// // console.log('svgIntro: ', svgIntro);
+    case 'landscape': // гора
+      return {
+        fill: 'grey',
+        fillStyle: 'cross-hatch',
+        hachureGap: 1,
+        fillWeight: 1,
+      };
 
-// // console.log('OUTLINE_ONLY: ', OUTLINE_ONLY);
-// console.log('OUTLINE_WITH_HACHURE: ', OUTLINE_WITH_HACHURE);
-// // console.log('OUTLINE_WITH_SOLID: ', OUTLINE_WITH_SOLID);
-// // function prefersReducedMotion(): boolean {
-// //   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-// // }
+    case 'cloud':
+      return {
+        fill: 'white',
+        fillStyle: 'cross-hatch',
+        hachureGap: 1,
+        hachureAngle: 45,
+        fillWeight: 1,
+      };
 
-// function getOptionsForPath(path: SVGPathElement): RoughOptions {
-//   for (const cls of path.classList) {
-//     // console.log('cls: ', cls);
-//     if (OUTLINE_WITH_HACHURE.has(cls)) {
-//       console.log('cls: ', cls);
-//       return {
-//         ...BASE_OPTIONS,
-//         fill: 'red',
-//         fillStyle: 'hachure',
-//         hachureGap: 4,
-//         hachureAngle: 41,
-//         fillWeight: 1,
-//       };
-//     }
-//     if (OUTLINE_WITH_SOLID.has(cls)) {
-//       return { ...BASE_OPTIONS, fill: 'green', fillStyle: 'solid' };
-//     }
-//   }
-//   return { ...BASE_OPTIONS, fill: 'none' };
-// }
+    case 'roof': //снежная шапка
+      return {
+        fill: 'white',
+        fillStyle: 'cross-hatch',
+        hachureGap: 1,
+        hachureAngle: -45,
+        fillWeight: 1,
+      };
 
-// function sketchifyIntro(): void {
-//   const rc = rough.svg(svgIntro);
+    case 'display': {
+      return {
+        fill: 'rgb(209, 207, 199)',
+        fillStyle: 'solid',
+        hachureGap: 1,
+        fillWeight: 1,
+      };
+    }
 
-//   const paths = Array.from(svgIntro.querySelectorAll<SVGPathElement>('path'));
-//   console.log('paths: ', paths);
+    case 'display-plate': // нижняя планка монитора
+      return {
+        fill: 'grey',
+        fillStyle: 'hachure',
+        hachureGap: 2,
+        hachureAngle: 42,
+        fillWeight: 1,
+      };
 
-//   for (const path of paths) {
-//     const d = path.getAttribute('d');
-//     if (!d) continue;
+    case 'chair': // спинка кресла
+      return {
+        fill: '#b58558',
+        fillStyle: 'cross-hatch',
+        hachureGap: 1,
+        fillWeight: 1,
+      };
 
-//     const options = getOptionsForPath(path);
-//     const roughPath = rc.path(d, options);
+    case 'ground': // столешница
+      return {
+        fill: '#e2b282',
+        fillStyle: 'hachure',
+        hachureGap: 2,
+        hachureAngle: 42,
+        fillWeight: 1,
+      };
 
-//     // Переносим class для будущей анимации/CSS
-//     const cls = path.getAttribute('class');
-//     if (cls) {
-//       roughPath.setAttribute('class', cls);
-//     }
+    case 'book-one':
+      return {
+        fill: 'white',
+        stroke: 'red',
+        strokeWidth: 3,
+        fillStyle: 'solid',
+        hachureGap: 1,
+        hachureAngle: 90,
+        fillWeight: 1,
+      };
 
-//     path.replaceWith(roughPath);
-//   }
+    case 'book-two':
+      return {
+        fill: 'white',
+        stroke: 'yellow',
+        strokeWidth: 9,
+        fillStyle: 'solid',
+        hachureGap: 1,
+        hachureAngle: 90,
+        fillWeight: 1,
+      };
 
-//   console.info(`[intro] Перерисовано path: ${paths.length}`);
-// }
+    case 'book-three':
+      return {
+        fill: 'white',
+        stroke: 'green',
+        strokeWidth: 5,
+        fillStyle: 'hachure',
+        hachureGap: 4,
+        hachureAngle: 90,
+        fillWeight: 1,
+      };
 
-// export { sketchifyIntro }
+    case 'book-four':
+      return {
+        fill: 'white',
+        stroke: 'blue',
+        strokeWidth: 5,
+        fillStyle: 'hachure',
+        hachureGap: 4,
+        hachureAngle: 90,
+        fillWeight: 1,
+      };
+
+    case 'cup-two':
+      return {
+        fill: 'rgb(92, 64, 51)',
+        fillStyle: 'solid',
+        hachureGap: 1,
+        fillWeight: 1,
+      };
+
+    default:
+      return {};
+  }
+}
+
+function sketchifyIntro(svg: SVGSVGElement): void {
+  const rc = rough.svg(svg);
+
+  // Array.from — критично, replaceWith меняет DOM
+  const paths = Array.from(svg.querySelectorAll<SVGPathElement>('path'));
+
+  for (const path of paths) {
+    const d = path.getAttribute('d');
+    if (!d) continue;
+
+    const className = path.getAttribute('class') || '';
+
+    // Объединяем базовые опции обводки + опции заливки для класса
+    const options: RoughOptions = {
+      ...BASE_OPTIONS,
+      ...fillOptionsForClass(className),
+    };
+
+    const roughPath = rc.path(d, options);
+
+    // Переносим class для CSS/анимации
+    if (className) {
+      roughPath.setAttribute('class', className);
+    }
+
+    path.replaceWith(roughPath);
+  }
+}
+
+export { sketchifyIntro };
