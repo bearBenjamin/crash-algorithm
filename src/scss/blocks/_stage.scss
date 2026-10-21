@@ -14,7 +14,7 @@
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem 0;
 }
 
 .stage__title {
@@ -32,6 +32,19 @@
   font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   color: $color-text-muted;
   text-align: left;
+}
+
+.stage__content-wrapper {
+  display: flex;
+}
+
+.stage__bear {
+  margin-left: auto;
+  width: 480px;
+  height: 640px;
+  align-self: start;
+  mix-blend-mode: darken;
+  isolation: isolate;
 }
 
 .stage__book-list {
@@ -69,7 +82,7 @@
 
   transition:
     transform 0.5s ease,
-    /* появление — плавно */ opacity 0.5s ease,
+    opacity 0.5s ease,
     visibility 0s;
 }
 
@@ -87,7 +100,6 @@
 
   transform: translateX(-30px);
 
-  /* Настраиваем плавность для прозрачности, видимости и движения */
   transition:
     transform 0.4s ease,
     opacity 0.4s ease,

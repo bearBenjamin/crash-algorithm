@@ -1,3 +1,5 @@
+import { initBear } from './draw-pircture/bear';
+
 function main(): void {
   const art = document.querySelector<HTMLElement>('.intro-js');
   // const picture = art?.querySelector<SVGSVGElement>('.intro__svg-js');
@@ -61,33 +63,10 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     main();
     initBookList();
+    initBear();
   });
 } else {
   main();
   initBookList();
+  initBear();
 }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const bookList = document.querySelector<HTMLUListElement>('.stage__book-list');
-
-//   bookList?.addEventListener('click', (event) => {
-//     const target = event.target;
-//     if (!(target instanceof HTMLElement)) return;
-
-//     const wrapper = target.closest<HTMLElement>('.stage__book-wrapper');
-//     if (!wrapper) return;
-
-//     const currentItem = wrapper.closest<HTMLElement>('.stage__book-item');
-
-//     if (currentItem) {
-//       const isOpen = currentItem.classList.contains('stage__book-item--is-open');
-
-//       const openItems = bookList.querySelectorAll('.stage__book-item--is-open');
-//       openItems.forEach((item) => item.classList.remove('stage__book-item--is-open'));
-
-//       if (!isOpen) {
-//         currentItem.classList.add('stage__book-item--is-open');
-//       }
-//     }
-//   });
-// });
