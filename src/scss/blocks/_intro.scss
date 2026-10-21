@@ -35,6 +35,9 @@
 
   object-position: center;
   margin: 0 auto 2rem;
+
+  mix-blend-mode: darken;
+  isolation: isolate;
 }
 
 .intro__title {
