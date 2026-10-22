@@ -1,37 +1,75 @@
-import { initBear } from './draw-pircture/bear';
-import { sketchifyIntro } from './draw-pircture/intro';
+import { sketchifyBear } from './draw-picture/bear';
+import { sketchifyIntro } from './draw-picture/intro';
 
 function main(): void {
-  const art = document.querySelector<HTMLElement>('.intro-js');
-  const picture = art?.querySelector<SVGSVGElement>('.intro__svg-js');
-  const title = art?.querySelector<HTMLElement>('.intro__title-js');
-  const subtitle = art?.querySelector<HTMLElement>('.intro__subtitle-js');
-  const enterBtn = art?.querySelector<HTMLButtonElement>('.intro__enter-js');
+  const mainPage = document.querySelector<HTMLElement>('.main-page');
+  const intro = document.querySelector<HTMLElement>('.intro-js');
 
-  if (!art || !title || !subtitle || !enterBtn) {
+  const pictureIntro = intro?.querySelector<SVGSVGElement>('.intro__svg-js');
+  const pictureMain = mainPage?.querySelector<SVGSVGElement>('.stage__bear');
+
+  const introTitle = intro?.querySelector<HTMLElement>('.intro__title-js');
+  const introSubtitle = intro?.querySelector<HTMLElement>('.intro__subtitle-js');
+
+  const enterBtn = intro?.querySelector<HTMLButtonElement>('.intro__enter-js');
+
+  const isIntroReady = Boolean(intro && introTitle && introSubtitle && enterBtn);
+
+  if (!isIntroReady) {
     console.warn('[intro] Не найдены обязательные элементы заставки');
+  }
+
+  if (pictureIntro) {
+    sketchifyIntro(pictureIntro);
+  }
+
+  if (pictureMain) {
+    sketchifyBear(pictureMain);
+  }
+
+  if (isIntroReady && intro && enterBtn && mainPage) {
+    initIntroLogic(intro, enterBtn, mainPage);
+  }
+}
+
+function initIntroLogic(
+  intro: HTMLElement,
+  enterBtn: HTMLButtonElement,
+  mainPage: HTMLElement
+): void {
+  const STORAGE_KEY = 'splash-seen';
+
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+    hideIntro(intro);
     return;
   }
 
-  // Проверяем — показывали ли заставку в этой сессии?
-  // Если да — пропускаем (пользователь уже видел на этом tab-е)
-  // if (sessionStorage.getItem('splash-seen') === '1') {
-  //   redirectToHome(art);
-  //   return;
-  // }
-  sketchifyIntro(picture as SVGSVGElement);
+  showIntro(intro, mainPage);
 
-  // Хук: кнопка «Войти» — прерывает анимацию и переходит дальше
   enterBtn.addEventListener('click', () => {
-    sessionStorage.setItem('splash-seen', '1');
-    closeIntro(art);
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    closeIntro(intro, mainPage);
   });
 
-  // Сюда добавим anime-анимацию маски на следующем шаге.
+  // будет еще логика анимации
 }
 
-function closeIntro(art: HTMLElement): void {
-  art.classList.add('intro--is-hidden');
+function showIntro(intro: HTMLElement, mainPage: HTMLElement) {
+  intro.classList.remove('intro--is-hidden');
+  mainPage.classList.add('stage--is-hidden');
+  document.body.style.overflow = 'hidden';
+  mainPage.setAttribute('inert', '');
+}
+
+function closeIntro(intro: HTMLElement, mainPage: HTMLElement): void {
+  intro.classList.add('intro--is-hidden');
+  mainPage.classList.remove('stage--is-hidden');
+  document.body.style.overflow = '';
+  mainPage.removeAttribute('inert');
+}
+
+function hideIntro(intro: HTMLElement): void {
+  intro.classList.add('intro--is-hidden');
 }
 
 function initBookList(): void {
@@ -65,10 +103,8 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     main();
     initBookList();
-    initBear();
   });
 } else {
   main();
   initBookList();
-  initBear();
 }

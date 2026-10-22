@@ -10,6 +10,10 @@
   text-align: center;
 }
 
+.stage--is-hidden {
+  visibility: hidden;
+}
+
 .stage__wrapper {
   width: 100%;
   max-width: 1920px;
