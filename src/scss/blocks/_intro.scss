@@ -46,9 +46,29 @@
   line-height: 1.4;
 }
 
+.intro__title-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.intro__title-text {
+  display: block;
+  transform: translateX(-100%);
+}
+
 .intro__subtitle {
   margin-bottom: 1rem;
   font-size: clamp(1.1rem, 0.88rem + 0.93vw, 2rem);
+}
+
+.intro__subtitle-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.intro__subtitle-text {
+  display: block;
+  transform: translate(100%);
 }
 
 .intro__enter {
@@ -63,6 +83,7 @@
   border: 2px solid $color-button-main;
   border-radius: 999px;
   cursor: pointer;
+  opacity: 0;
   transition:
     transform 0.15s ease,
     background-color 0.2s ease,

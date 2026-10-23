@@ -8,8 +8,8 @@ function fillOptionsForClass(className: string): Partial<RoughOptions> {
       return {
         fill: BASE_COLORS.accentBlue, // мягкий небесно-голубой
         fillStyle: 'hachure',
-        hachureGap: 4, // реже — небо «воздушное»
-        hachureAngle: 90, // вертикально — как лёгкий дождик
+        hachureGap: 4,
+        hachureAngle: 90,
         fillWeight: 0.8,
       };
 

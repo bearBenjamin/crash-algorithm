@@ -17,110 +17,120 @@ block init
       title#cover-title Заставка сайта
       desc#cover-desc Скетч-иллюстрация в стиле книги «Грокаем алгоритмы» — кресло читателя, чашка на столе
       <defs>
-        <pattern id="wallpaper" x="0" y="0" width="60" height="100" patternUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="40" height="100" fill="#fafafa" />
-          <rect x="40" y="0" width="20" height="100" fill="#eaeaea" />
-        </pattern>
+        <mask id="reveal-boustrophedon">
+          <rect class="reveal-row" x="0"    y="0"    width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="100%" y="12.5%" width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="0"    y="25%"   width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="100%" y="37.5%" width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="0"    y="50%"   width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="100%" y="62.5%" width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="0"    y="75%"   width="0" height="12.5%" fill="white" />
+          <rect class="reveal-row" x="100%" y="87.5%" width="0" height="12.5%" fill="white" />
+        </mask>
       </defs>
-      //- <rect x="0" y="0" width="1760" height="860" fill="url(#wallpaper)" />
+      <g mask="url(#reveal-boustrophedon)">
+        //- <!-- Блок 1: верхний левый — цитата о бинарном поиске -->
+        <text x="70" y="80" font-family="Patrick Hand, cursive" font-size="22" fill="#1d1d1d" transform="rotate(-2, 30, 80)">«Бинарный поиск —</text>
+        <text x="90" y="115" font-family="Patrick Hand, cursive" font-size="22" fill="#1d1d1d" transform="rotate(-2, 50, 115)">это не про 0 и 1,</text>
+        <text x="75" y="150" font-family="Patrick Hand, cursive" font-size="22" fill="#1d1d1d" transform="rotate(-2, 35, 150)">а про половины.»</text>
+        <!-- Подпись автора -->
+        <text x="250" y="170" font-family="Patrick Hand, cursive" font-size="16" fill="#555" font-style="italic">— Aditya Bhargava</text>
 
-      <!-- Блок 1: верхний левый — цитата о бинарном поиске -->
-      <text x="70" y="80" font-family="Patrick Hand, cursive" font-size="22" fill="#1d1d1d" transform="rotate(-2, 30, 80)">«Бинарный поиск —</text>
-      <text x="90" y="115" font-family="Patrick Hand, cursive" font-size="22" fill="#1d1d1d" transform="rotate(-2, 50, 115)">это не про 0 и 1,</text>
-      <text x="75" y="150" font-family="Patrick Hand, cursive" font-size="22" fill="#1d1d1d" transform="rotate(-2, 35, 150)">а про половины.»</text>
-      <!-- Подпись автора -->
-      <text x="250" y="170" font-family="Patrick Hand, cursive" font-size="16" fill="#555" font-style="italic">— Aditya Bhargava</text>
+        //- <!-- Блок 2: средний левый — O(log n) формула -->
+        <text x="200" y="290" font-family="Patrick Hand, cursive" font-size="28" fill="#555">O(log n)</text>
+        <text x="220" y="325" font-family="Patrick Hand, cursive" font-size="24" fill="#888">быстрее, чем</text>
+        <text x="260" y="355" font-family="Patrick Hand, cursive" font-size="28" fill="#555">O(n)</text>
+        <text x="200" y="395" font-family="Patrick Hand, cursive" font-size="20" fill="#888">в 8 раз при n=256</text>
 
-      <!-- Блок 2: средний левый — O(log n) формула -->
-      <text x="200" y="290" font-family="Patrick Hand, cursive" font-size="28" fill="#555">O(log n)</text>
-      <text x="220" y="325" font-family="Patrick Hand, cursive" font-size="24" fill="#888">быстрее, чем</text>
-      <text x="260" y="355" font-family="Patrick Hand, cursive" font-size="28" fill="#555">O(n)</text>
-      <text x="200" y="395" font-family="Patrick Hand, cursive" font-size="20" fill="#888">в 8 раз при n=256</text>
+        //- <!-- Блок 3: нижний левый — правило -->
+        <text x="60" y="500" font-family="Patrick Hand, cursive" font-size="30" fill="#777" transform="rotate(1, 60, 500)">массив должен быть</text>
+        <text x="60" y="530" font-family="Patrick Hand, cursive" font-size="30" fill="#777" transform="rotate(1, 60, 530)">отсортирован.</text>
+        <!-- Подчёркивание -->
+        <path d="M 60 560 L 280 548" stroke="#777" stroke-width="1.5" fill="none" stroke-linecap="round" />
 
-      <!-- Блок 3: нижний левый — правило -->
-      <text x="60" y="500" font-family="Patrick Hand, cursive" font-size="30" fill="#777" transform="rotate(1, 60, 500)">массив должен быть</text>
-      <text x="60" y="530" font-family="Patrick Hand, cursive" font-size="30" fill="#777" transform="rotate(1, 60, 530)">отсортирован.</text>
-      <!-- Подчёркивание -->
-      <path d="M 60 560 L 280 548" stroke="#777" stroke-width="1.5" fill="none" stroke-linecap="round" />
+        //- <!-- Блок 4: нижний левый — мысль -->
+        <text x="40" y="640" font-family="Patrick Hand, cursive" font-size="24" fill="#666">не торопись.</text>
+        <text x="50" y="680" font-family="Patrick Hand, cursive" font-size="35" fill="#666">грокай.</text>
+        //- <!-- Три точки как «задумчивость» -->
+        <circle cx="120" cy="720" r="3" fill="#888" />
+        <circle cx="135" cy="723" r="3" fill="#888" />
+        <circle cx="150" cy="720" r="3" fill="#888" />
+        <text x="160" y="725" font-family="Patrick Hand, cursive" font-size="26" fill="#999" font-style="italic">n/2 → n/4 → n/8 → ...</text>
 
-      <!-- Блок 4: нижний левый — мысль -->
-      <text x="40" y="640" font-family="Patrick Hand, cursive" font-size="24" fill="#666">не торопись.</text>
-      <text x="50" y="680" font-family="Patrick Hand, cursive" font-size="35" fill="#666">грокай.</text>
-      <!-- Три точки как «задумчивость» -->
-      <circle cx="120" cy="720" r="3" fill="#888" />
-      <circle cx="135" cy="723" r="3" fill="#888" />
-      <circle cx="150" cy="720" r="3" fill="#888" />
-      <text x="160" y="725" font-family="Patrick Hand, cursive" font-size="26" fill="#999" font-style="italic">n/2 → n/4 → n/8 → ...</text>
+        //- <!-- Блок 5: самый низ — номер главы -->
+        <text x="160" y="800" font-family="Patrick Hand, cursive" font-size="22" fill="#aaa">глава 1</text>
+        <path d="M 160 810 L 260 810" stroke="#aaa" stroke-width="1" fill="none" />
+        <text x="160" y="830" font-family="Patrick Hand, cursive" font-size="20" fill="#aaa">стр. 7</text>
 
-      <!-- Блок 5: самый низ — номер главы -->
-      <text x="160" y="800" font-family="Patrick Hand, cursive" font-size="22" fill="#aaa">глава 1</text>
-      <path d="M 160 810 L 260 810" stroke="#aaa" stroke-width="1" fill="none" />
-      <text x="160" y="830" font-family="Patrick Hand, cursive" font-size="20" fill="#aaa">стр. 7</text>
+        //- <!-- Блок 1: верхний правый — последовательность делений -->
+        <text x="1340" y="80" font-family="Patrick Hand, cursive" font-size="26" fill="#555">128 → 64 → 32</text>
+        <text x="1340" y="110" font-family="Patrick Hand, cursive" font-size="26" fill="#555">→ 16 → 8 → 4</text>
+        <text x="1340" y="140" font-family="Patrick Hand, cursive" font-size="26" fill="#555">→ 2 → </text>
+        //- <!-- Подпись -->
+        <text x="1340" y="175" font-family="Patrick Hand, cursive" font-size="24" fill="#999" font-style="italic">log₂(128) = 7 шагов</text>
 
-      <!-- Блок 1: верхний правый — последовательность делений -->
-      <text x="1340" y="80" font-family="Patrick Hand, cursive" font-size="26" fill="#555">128 → 64 → 32</text>
-      <text x="1340" y="110" font-family="Patrick Hand, cursive" font-size="26" fill="#555">→ 16 → 8 → 4</text>
-      <text x="1340" y="140" font-family="Patrick Hand, cursive" font-size="26" fill="#555">→ 2 → </text>
-      <!-- Подпись -->
-      <text x="1340" y="175" font-family="Patrick Hand, cursive" font-size="24" fill="#999" font-style="italic">log₂(128) = 7 шагов</text>
+        //- <!-- Блок 2: средний правый — «дели пополам» -->
+        <text x="1360" y="260" font-family="Patrick Hand, cursive" font-size="24" fill="#666" transform="rotate(-1.5, 1360, 260)">дели пополам,</text>
+        <text x="1380" y="295" font-family="Patrick Hand, cursive" font-size="24" fill="#666" transform="rotate(-1.5, 1380, 295)">пока не найдёшь.</text>
+        //- <!-- Восклицание -->
+        <text x="1400" y="335" font-family="Patrick Hand, cursive" font-size="28" fill="#888">⌣</text>
 
-      <!-- Блок 2: средний правый — «дели пополам» -->
-      <text x="1360" y="260" font-family="Patrick Hand, cursive" font-size="24" fill="#666" transform="rotate(-1.5, 1360, 260)">дели пополам,</text>
-      <text x="1380" y="295" font-family="Patrick Hand, cursive" font-size="24" fill="#666" transform="rotate(-1.5, 1380, 295)">пока не найдёшь.</text>
-      <!-- Восклицание -->
-      <text x="1400" y="335" font-family="Patrick Hand, cursive" font-size="28" fill="#888">⌣</text>
+        //- <!-- Блок 3: правый средний — вычисление -->
+        <text x="1340" y="420" font-family="Patrick Hand, cursive" font-size="28" fill="#777">log₂(1 048 576)</text>
+        <text x="1340" y="450" font-family="Patrick Hand, cursive" font-size="28" fill="#777">= 20 шагов</text>
+        //- <!-- Сравнение -->
+        <text x="1440" y="490" font-family="Patrick Hand, cursive" font-size="26" fill="#999">vs. 1 048 576 шагов</text>
+        <text x="1440" y="510" font-family="Patrick Hand, cursive" font-size="24" fill="#aaa">простым перебором</text>
 
-      <!-- Блок 3: правый средний — вычисление -->
-      <text x="1340" y="420" font-family="Patrick Hand, cursive" font-size="28" fill="#777">log₂(1 048 576)</text>
-      <text x="1340" y="450" font-family="Patrick Hand, cursive" font-size="28" fill="#777">= 20 шагов</text>
-      <!-- Сравнение -->
-      <text x="1440" y="490" font-family="Patrick Hand, cursive" font-size="26" fill="#999">vs. 1 048 576 шагов</text>
-      <text x="1440" y="510" font-family="Patrick Hand, cursive" font-size="24" fill="#aaa">простым перебором</text>
+        //- <!-- Блок 4: правый нижний — мотивация -->
+        <text x="1360" y="600" font-family="Patrick Hand, cursive" font-size="22" fill="#666">начни с малого:</text>
+        <text x="1380" y="635" font-family="Patrick Hand, cursive" font-size="22" fill="#666">угадай число</text>
+        <text x="1390" y="670" font-family="Patrick Hand, cursive" font-size="22" fill="#666">от 1 до 100.</text>
+        //- <!-- Подчёркивание-область -->
+        <path d="M 1380 680 Q 1500 685 1620 680" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round" />
+        <text x="1380" y="705" font-family="Patrick Hand, cursive" font-size="16" fill="#888">≤ 7 попыток.</text>
 
-      <!-- Блок 4: правый нижний — мотивация -->
-      <text x="1360" y="600" font-family="Patrick Hand, cursive" font-size="22" fill="#666">начни с малого:</text>
-      <text x="1380" y="635" font-family="Patrick Hand, cursive" font-size="22" fill="#666">угадай число</text>
-      <text x="1390" y="670" font-family="Patrick Hand, cursive" font-size="22" fill="#666">от 1 до 100.</text>
-      <!-- Подчёркивание-область -->
-      <path d="M 1380 680 Q 1500 685 1620 680" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round" />
-      <text x="1380" y="705" font-family="Patrick Hand, cursive" font-size="16" fill="#888">≤ 7 попыток.</text>
+        //- <!-- Блок 5: самый низ — рефлексия -->
+        <text x="1380" y="780" font-family="Patrick Hand, cursive" font-size="28" fill="#1d1d1d" font-style="italic">«grok = понимать</text>
+        <text x="1400" y="810" font-family="Patrick Hand, cursive" font-size="28" fill="#1d1d1d" font-style="italic">нутром»</text>
+        <text x="1420" y="835" font-family="Patrick Hand, cursive" font-size="24" fill="#555">— Роберт Хайнлайн</text>
 
-      <!-- Блок 5: самый низ — рефлексия -->
-      <text x="1380" y="780" font-family="Patrick Hand, cursive" font-size="28" fill="#1d1d1d" font-style="italic">«grok = понимать</text>
-      <text x="1400" y="810" font-family="Patrick Hand, cursive" font-size="28" fill="#1d1d1d" font-style="italic">нутром»</text>
-      <text x="1420" y="835" font-family="Patrick Hand, cursive" font-size="24" fill="#555">— Роберт Хайнлайн</text>
+        //- <!-- Цитата 1: слева сверху, с наклоном -->
+        <text x="440" y="50" font-family="Patrick Hand, cursive" font-size="28" fill="#555" transform="rotate(-1.5, 480, 50)">«Грокать — это не запоминать,</text>
+        <text x="460" y="80" font-family="Patrick Hand, cursive" font-size="28" fill="#555" transform="rotate(-1.5, 500, 80)">а понимать нутром.»</text>
 
-      <!-- Цитата 1: слева сверху, с наклоном -->
-      <text x="440" y="50" font-family="Patrick Hand, cursive" font-size="28" fill="#555" transform="rotate(-1.5, 480, 50)">«Грокать — это не запоминать,</text>
-      <text x="460" y="80" font-family="Patrick Hand, cursive" font-size="28" fill="#555" transform="rotate(-1.5, 500, 80)">а понимать нутром.»</text>
+        //- <!-- Цитата 2: справа сверху, с другим наклоном -->
+        <text x="960" y="55" font-family="Patrick Hand, cursive" font-size="20" fill="#666" transform="rotate(1, 1100, 55)">«Простые алгоритмы —</text>
+        <text x="980" y="85" font-family="Patrick Hand, cursive" font-size="20" fill="#666" transform="rotate(1, 1120, 85)">это фундамент.»</text>
 
-      <!-- Цитата 2: справа сверху, с другим наклоном -->
-      <text x="960" y="55" font-family="Patrick Hand, cursive" font-size="20" fill="#666" transform="rotate(1, 1100, 55)">«Простые алгоритмы —</text>
-      <text x="980" y="85" font-family="Patrick Hand, cursive" font-size="20" fill="#666" transform="rotate(1, 1120, 85)">это фундамент.»</text>
+        //- <!-- Подпись автора под второй цитатой -->
+        <text x="1040" y="110" font-family="Patrick Hand, cursive" font-size="14" fill="#999" font-style="italic">— Aditya Bhargava</text>
 
-      <!-- Подпись автора под второй цитатой -->
-      <text x="1040" y="110" font-family="Patrick Hand, cursive" font-size="14" fill="#999" font-style="italic">— Aditya Bhargava</text>
-
-      g(transform="translate(0 120)")
-        path(class="frame" fill="#fff" stroke="#000" stroke-width="1.5" d="M439.5 4.5h875v588h-875z")
-        path(class="landscape" fill="#fff" stroke="#000" stroke-width="1.5" d="M1225.11 158.829 1314 336.618V592H508.951c76.6-111.513 241.721-271.45 314.884-337.629l.009-.008.008-.008L984.803 95.402l88.157-50.305z")
-        path(class="cloud" fill="#fff" stroke="#000" stroke-linecap="round" stroke-width="1.5" d="M498.5 125s42.5 46.5 61.5 41 113 0 113 0 77.775-28.237 61.5-56.5C724.686 92.457 715 89 688.5 89s-41-25.5-41-25.5-24.5-10-67 0S565 95.5 560 89s-41 0-41 0-20.5 11.5-20.5 20.5z")
-        path(class="roof" fill="#fff" stroke="#000" stroke-linecap="round" stroke-width="1.5" d="m1005 214-97-40-1.5-1L985 97l88-50.5L1220.5 157l-57 66.5L1065 190z")
-        path(class="ground" fill="#fff" stroke="#000" stroke-width="1.5" d="M394.5 665.5h937v26h-937z")
-        g(class="workplace" fill="#fff" stroke="#000")
-          path(class="display" stroke-width="3" d="M638 354h510v260H638z")
-          path(class="display-plate" stroke-width="1.5" d="M642 609.5h502a8.5 8.5 0 0 1 8.5 8.5v6a8.5 8.5 0 0 1 -8.5 8.5h-502a8.5 8.5 0 0 1 -8.5 -8.5v-6a8.5 8.5 0 0 1 8.5 -8.5z")
-          path(class="chair" stroke-width="1.5" d="M806 735V550s0-14.5 27.5-43 98.5-27.5 123 0 23.5 43 23.5 43v185")
-        g(class="cup" fill="#fff" stroke="#000")
-          path(class="cup-one" stroke-width="4" d="M1240 623c8.23 0 15 6.885 15 15.5s-6.77 15.5-15 15.5-15-6.885-15-15.5 6.77-15.5 15-15.5Z")
-          path(class="cup-two" stroke-width="1.5" d="M1201.5 609.5h43v56h-43z")
-        g(fill="#fff" stroke="#000" stroke-width="1.5")
-          path(class="book-one" d="M417.5 509.5h209v49h-209z")
-          path(class="book-two" d="M434.5 559.5h182v35h-182z")
-          path(class="book-three" d="M424.5 595.5h192v32h-192z")
-          path(class="book-four" d="M417.5 628.5h207v36h-207z")
-    h1.title.intro__title.intro__title-js Как я грокал код...
-    p.subtitle.intro__subtitle.intro__subtitle-js Читательский дневник с визуализацией
+        g(transform="translate(0 120)")
+          path(class="frame" fill="#fff" stroke="#000" stroke-width="1.5" d="M439.5 4.5h875v588h-875z")
+          path(class="landscape" fill="#fff" stroke="#000" stroke-width="1.5" d="M1225.11 158.829 1314 336.618V592H508.951c76.6-111.513 241.721-271.45 314.884-337.629l.009-.008.008-.008L984.803 95.402l88.157-50.305z")
+          path(class="cloud" fill="#fff" stroke="#000" stroke-linecap="round" stroke-width="1.5" d="M498.5 125s42.5 46.5 61.5 41 113 0 113 0 77.775-28.237 61.5-56.5C724.686 92.457 715 89 688.5 89s-41-25.5-41-25.5-24.5-10-67 0S565 95.5 560 89s-41 0-41 0-20.5 11.5-20.5 20.5z")
+          path(class="roof" fill="#fff" stroke="#000" stroke-linecap="round" stroke-width="1.5" d="m1005 214-97-40-1.5-1L985 97l88-50.5L1220.5 157l-57 66.5L1065 190z")
+          path(class="ground" fill="#fff" stroke="#000" stroke-width="1.5" d="M394.5 665.5h937v26h-937z")
+          g(class="workplace" fill="#fff" stroke="#000")
+            path(class="display" stroke-width="3" d="M638 354h510v260H638z")
+            path(class="display-plate" stroke-width="1.5" d="M642 609.5h502a8.5 8.5 0 0 1 8.5 8.5v6a8.5 8.5 0 0 1 -8.5 8.5h-502a8.5 8.5 0 0 1 -8.5 -8.5v-6a8.5 8.5 0 0 1 8.5 -8.5z")
+            path(class="chair" stroke-width="1.5" d="M806 735V550s0-14.5 27.5-43 98.5-27.5 123 0 23.5 43 23.5 43v185")
+          g(class="cup" fill="#fff" stroke="#000")
+            path(class="cup-one" stroke-width="4" d="M1240 623c8.23 0 15 6.885 15 15.5s-6.77 15.5-15 15.5-15-6.885-15-15.5 6.77-15.5 15-15.5Z")
+            path(class="cup-two" stroke-width="1.5" d="M1201.5 609.5h43v56h-43z")
+          g(fill="#fff" stroke="#000" stroke-width="1.5")
+            path(class="book-one" d="M417.5 509.5h209v49h-209z")
+            path(class="book-two" d="M434.5 559.5h182v35h-182z")
+            path(class="book-three" d="M424.5 595.5h192v32h-192z")
+            path(class="book-four" d="M417.5 628.5h207v36h-207z")
+      </g>
+    h1.title.intro__title.intro__title-js
+      span.intro__title-mask
+        span.intro__title-text Как я грокал код...
+    p.subtitle.intro__subtitle.intro__subtitle-js
+      span.intro__subtitle-mask
+        span.intro__subtitle-text Читательский дневник с визуализацией
 
     button.button.intro__enter.intro__enter-js(type="button") Войти
 block header

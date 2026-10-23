@@ -1,5 +1,7 @@
 import { sketchifyBear } from './draw-picture/bear';
 import { sketchifyIntro } from './draw-picture/intro';
+import { createTimeline } from 'animejs';
+import type { Timeline } from 'animejs';
 
 function main(): void {
   const mainPage = document.querySelector<HTMLElement>('.main-page');
@@ -52,6 +54,28 @@ function initIntroLogic(
   });
 
   // будет еще логика анимации
+  const rows = document.querySelectorAll<SVGRectElement>('.reveal-row');
+
+  const tl: Timeline = createTimeline({
+    defaults: {
+      duration: 400,
+      ease: 'inOutQuad',
+    },
+  });
+
+  rows.forEach((row, index) => {
+    const isEven = index % 2 === 0;
+
+    if (isEven) {
+      tl.add(row, { width: '100%' });
+    } else {
+      tl.add(row, { x: '0%', width: '100%' });
+    }
+  });
+
+  tl.add('.intro__title-text', { x: ['-100%', '0%'] }, '<')
+    .add('.intro__subtitle-text', { x: ['100%', '0%'] }, '<')
+    .add('.intro__enter', { opacity: [0, 1], duration: 500 }, '<');
 }
 
 function showIntro(intro: HTMLElement, mainPage: HTMLElement) {
