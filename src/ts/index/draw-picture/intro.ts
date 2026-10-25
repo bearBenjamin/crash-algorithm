@@ -1,5 +1,5 @@
-import { sketchifySvg, type PathOptionsResolver } from '../utils/sketchify';
-import { BASE_OPTIONS, BASE_COLORS } from '../utils/const';
+import { sketchifySvg, type PathOptionsResolver } from '@scripts/utils/sketchify';
+import { BASE_OPTIONS, BASE_COLORS } from '@scripts/utils/const';
 import type { Options as RoughOptions } from 'roughjs/bin/core';
 
 function fillOptionsForClass(className: string): Partial<RoughOptions> {

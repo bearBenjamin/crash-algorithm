@@ -6,6 +6,12 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
 
+    "paths": {
+      "@/*": ["./src/*"],
+      "@styles/*": ["./src/scss/*"],
+      "@scripts/*": ["./src/ts/*"]
+    },
+
     /* Строгость */
     "strict": true,
     "noImplicitOverride": true, // override@method — явно, иначе ошибка

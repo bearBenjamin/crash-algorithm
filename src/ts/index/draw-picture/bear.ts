@@ -1,5 +1,5 @@
-import { sketchifySvg, type PathOptionsResolver } from '../utils/sketchify';
-import { BASE_OPTIONS, BEAR_COLOR } from '../utils/const';
+import { sketchifySvg, type PathOptionsResolver } from '@scripts/utils/sketchify';
+import { BASE_OPTIONS, BEAR_COLOR } from '@scripts/utils/const';
 
 function getFillType(path: SVGPathElement): 'black' | 'white' {
   const fill = path.getAttribute('fill') || '';
