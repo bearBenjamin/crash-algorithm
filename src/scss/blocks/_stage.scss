@@ -69,6 +69,10 @@
   user-select: none;
 }
 
+.stage--no-js .stage__book-wrapper {
+  cursor: auto;
+}
+
 .stage__book-name {
   margin-right: $space-small;
   font-size: 2rem;
@@ -77,17 +81,6 @@
 .stage__book-author {
   font-size: 1.8rem;
   color: $color-text-muted;
-}
-
-.stage__book-item--is-open .stage__book-item-list {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease,
-    visibility 0s;
 }
 
 .stage__book-item-list {
@@ -113,6 +106,25 @@
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: #1a1a1a transparent;
+}
+
+.stage--no-js .stage__book-item-list {
+  position: static;
+  max-height: 100%;
+  padding-right: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.stage__book-item--is-open .stage__book-item-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0s;
 }
 
 .stage__book-chapter {

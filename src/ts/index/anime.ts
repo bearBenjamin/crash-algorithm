@@ -1,8 +1,17 @@
 import { createTimeline } from 'animejs';
 import type { Timeline } from 'animejs';
+import { prefersReducedMotion } from '@scripts/utils/motion';
 
 function introAnime(): void {
   const rows = document.querySelectorAll<SVGRectElement>('.reveal-row');
+
+  if (prefersReducedMotion()) {
+    for (const row of rows) {
+      row.setAttribute('x', '0');
+      row.setAttribute('width', '100%');
+    }
+    return;
+  }
 
   const tl: Timeline = createTimeline({
     defaults: {

@@ -40,6 +40,11 @@
   isolation: isolate;
 }
 
+.intro__reveal-row {
+  /* Заставляет браузер прижимать края четко к пиксельной сетке */
+  shape-rendering: crispEdges; // хорошо работает с прямоугольниками
+}
+
 .intro__title {
   margin-bottom: 0.5rem;
   font-size: clamp(2.5rem, 6vw, 4rem);
@@ -54,6 +59,14 @@
 .intro__title-text {
   display: block;
   transform: translateX(-100%);
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: translateX(0);
+  }
+}
+
+.intro--no-js .intro__title-text {
+  transform: translateX(0);
 }
 
 .intro__subtitle {
@@ -69,6 +82,14 @@
 .intro__subtitle-text {
   display: block;
   transform: translate(100%);
+
+  @media (prefers-reduced-motion: reduce) {
+    transform: translateX(0);
+  }
+}
+
+.intro--no-js intro__subtitle-text {
+  transform: translateX(0);
 }
 
 .intro__enter {
@@ -88,6 +109,14 @@
     transform 0.15s ease,
     background-color 0.2s ease,
     color 0.2s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+  }
+}
+
+.intro--no-js .intro__enter {
+  opacity: 1;
 }
 
 .intro__enter:hover,
