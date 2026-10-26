@@ -2,44 +2,47 @@
 
 .stage {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: $space-medium;
-  text-align: center;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
 }
 
 .stage--is-hidden {
   visibility: hidden;
 }
 
-.stage__wrapper {
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem 0;
-}
-
 .stage__title {
   max-width: 640px;
-  margin-left: 240px;
+  margin: 0 auto;
   margin-bottom: 1.5rem;
   font-size: clamp(2.5rem, 6vw, 4rem);
-  text-align: left;
+  text-align: center;
 }
 
 .stage__subtitle {
   max-width: 880px;
-  margin-left: 240px;
-  margin-bottom: 3rem;
+  margin: 0 auto;
+  margin-bottom: 6rem;
   font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   color: $color-text-muted;
-  text-align: left;
+  text-align: center;
+
+  @media (max-width: $screen-laptop) {
+    margin-bottom: 3rem;
+  }
 }
 
 .stage__content-wrapper {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @media (max-width: $screen-laptop) {
+    padding: 0;
+  }
 }
 
 .stage__bear {
@@ -49,13 +52,31 @@
   align-self: start;
   mix-blend-mode: darken;
   isolation: isolate;
+
+  @media (max-width: 1680px) {
+    width: 400px;
+    height: 533px;
+  }
+
+  @media (max-width: 1550px) {
+    position: absolute;
+    top: 33%;
+    left: 10%;
+    z-index: -1;
+    width: 480px;
+    height: 640px;
+  }
 }
 
 .stage__book-list {
-  width: max-content;
-  min-width: 180px;
-  margin-left: 260px;
-  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  margin-left: clamp(0px, 12.5vw - 180px, 60px);
+
+  @media (max-width: 1550px) {
+    max-width: clamp(550px, 85.551vw - 326.04px, 1000px);
+    margin-left: 0;
+  }
 }
 
 .stage__book-item {
@@ -76,24 +97,39 @@
 .stage__book-name {
   margin-right: $space-small;
   font-size: 2rem;
+
+  @media (max-width: 1680px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: $screen-laptop) {
+    font-size: 1.6rem;
+  }
 }
 
 .stage__book-author {
   font-size: 1.8rem;
   color: $color-text-muted;
+
+  @media (max-width: 1680px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: $screen-laptop) {
+    font-size: 1.4rem;
+  }
 }
 
 .stage__book-item-list {
   width: max-content;
   max-height: 340px;
-  margin-left: 50px;
   padding-right: 15px;
   opacity: 0;
   visibility: hidden;
   position: absolute;
   top: 0;
   left: 100%;
-  z-index: 10;
+  z-index: 2;
 
   transform: translateX(-30px);
 
@@ -128,14 +164,18 @@
 }
 
 .stage__book-chapter {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .stage__book-chapter-link {
   display: block;
   width: 100%;
-  font-size: 2rem;
+  font-size: 1.8rem;
   white-space: nowrap;
+
+  @media (max-width: 1680px) {
+    font-size: 1.6rem;
+  }
 }
 
 .stage__book-chapter-link:hover {
