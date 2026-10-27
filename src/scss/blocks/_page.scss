@@ -10,42 +10,6 @@
   font-family: $font-hand;
   font-size: 1rem;
   background-color: $color-paper;
-  background-image:
-    $paper-texture, radial-gradient(ellipse at 30% 20%, rgba(255, 250, 240, 0.6), transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(220, 210, 195, 0.15), transparent 50%);
+  background-image: $paper-texture;
   background-repeat: repeat;
-
-  // &__menu {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: $space-medium;
-  //   margin: 0;
-  //   padding: 0;
-  // }
-
-  // &__footer {
-  //   border-top: 2px solid $color-button-main;
-  //   padding: $space-md $space-large;
-  //   text-align: center;
-  // }
-
-  // &__footer-text {
-  //   font-family: $font-hand;
-  //   font-size: 1rem;
-  //   color: $color-text-muted;
-  //   margin: 0;
-
-  //   a {
-  //     color: $color-button-main;
-  //     text-decoration: underline;
-  //     text-underline-offset: 3px;
-  //   }
-  // }
 }
-
-// @media (max-width: $bp-sm) {
-//   .page__nav {
-//     flex-direction: column;
-//     gap: $space-sm;
-//   }
-// }
