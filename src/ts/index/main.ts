@@ -5,6 +5,7 @@ import { introAnime } from '@scripts/index/anime';
 function main(): void {
   const mainPage = document.querySelector<HTMLElement>('.main-page');
   const intro = document.querySelector<HTMLElement>('.intro-js');
+  const stage = mainPage?.querySelector<HTMLElement>('.stage');
 
   const pictureIntro = intro?.querySelector<SVGSVGElement>('.intro__svg-js');
   const pictureMain = mainPage?.querySelector<SVGSVGElement>('.stage__bear');
@@ -28,16 +29,12 @@ function main(): void {
     sketchifyBear(pictureMain);
   }
 
-  if (isIntroReady && intro && enterBtn && mainPage) {
-    initIntroLogic(intro, enterBtn, mainPage);
+  if (isIntroReady && intro && enterBtn && stage) {
+    initIntroLogic(intro, enterBtn, stage);
   }
 }
 
-function initIntroLogic(
-  intro: HTMLElement,
-  enterBtn: HTMLButtonElement,
-  mainPage: HTMLElement
-): void {
+function initIntroLogic(intro: HTMLElement, enterBtn: HTMLButtonElement, stage: HTMLElement): void {
   const STORAGE_KEY = 'splash-seen';
 
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
@@ -45,28 +42,28 @@ function initIntroLogic(
     return;
   }
 
-  showIntro(intro, mainPage);
+  showIntro(intro, stage);
 
   enterBtn.addEventListener('click', () => {
     sessionStorage.setItem(STORAGE_KEY, '1');
-    closeIntro(intro, mainPage);
+    closeIntro(intro, stage);
   });
 
   introAnime();
 }
 
-function showIntro(intro: HTMLElement, mainPage: HTMLElement) {
+function showIntro(intro: HTMLElement, stage: HTMLElement) {
   intro.classList.remove('intro--is-hidden');
-  mainPage.classList.add('stage--is-hidden');
+  stage.classList.add('stage--is-hidden');
   document.body.style.overflow = 'hidden';
-  mainPage.setAttribute('inert', '');
+  stage.setAttribute('inert', '');
 }
 
-function closeIntro(intro: HTMLElement, mainPage: HTMLElement): void {
+function closeIntro(intro: HTMLElement, stage: HTMLElement): void {
   intro.classList.add('intro--is-hidden');
-  mainPage.classList.remove('stage--is-hidden');
+  stage.classList.remove('stage--is-hidden');
   document.body.style.overflow = '';
-  mainPage.removeAttribute('inert');
+  stage.removeAttribute('inert');
 }
 
 function hideIntro(intro: HTMLElement): void {
