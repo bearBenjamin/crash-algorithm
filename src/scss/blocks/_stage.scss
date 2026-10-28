@@ -69,7 +69,7 @@
   user-select: none;
 }
 
-.stage--no-js .stage__book-wrapper {
+.no-js .stage__book-wrapper {
   cursor: auto;
 }
 
@@ -107,7 +107,7 @@
   scrollbar-color: #1a1a1a transparent;
 }
 
-.stage--no-js .stage__book-item-list {
+.no-js .stage__book-item-list {
   position: static;
   max-height: 100%;
   padding-right: 0;

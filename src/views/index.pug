@@ -6,7 +6,7 @@ block vars
   include data/_book-data.pug
 
 block init
-  section.intro.intro--no-js.intro-js.intro--is-hidden
+  section.intro.intro-js.intro--is-hidden
     svg.intro__svg.intro__svg-js(
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1760 860"
@@ -141,7 +141,7 @@ block header
 
 block content
   include mixin/bookMix
-  section.stage.stage--no-js
+  section.stage
     h1.title.stage__title Как я грокал код...
     p.subtitle.stage__subtitle Личный блог о чтении книг по алгоритмам с визуализациями
     .stage__content-wrapper
