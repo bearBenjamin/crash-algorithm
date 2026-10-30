@@ -16,9 +16,7 @@
   overflow: hidden;
 
   background-color: $color-paper;
-  background-image:
-    $paper-texture, radial-gradient(ellipse at 30% 20%, rgba(255, 250, 240, 0.6), transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(220, 210, 195, 0.15), transparent 50%);
+  background-image: $paper-texture;
 }
 
 .intro--is-hidden {
@@ -113,10 +111,6 @@
   @media (prefers-reduced-motion: reduce) {
     opacity: 1;
   }
-}
-
-.no-js .intro__enter {
-  opacity: 1;
 }
 
 .intro__enter:hover,

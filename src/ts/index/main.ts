@@ -4,16 +4,21 @@ import { introAnime } from '@scripts/index/anime';
 
 function main(): void {
   const mainPage = document.querySelector<HTMLElement>('.main-page');
-  const intro = document.querySelector<HTMLElement>('.intro-js');
-  const stage = mainPage?.querySelector<HTMLElement>('.stage');
+  const intro = document.querySelector<HTMLElement>('.intro');
 
-  const pictureIntro = intro?.querySelector<SVGSVGElement>('.intro__svg-js');
+  const bookChapters = mainPage?.querySelectorAll<HTMLElement>('.stage__book-item-list');
+
+  bookChapters?.forEach((list) => {
+    list.classList.remove('stage__book-item-list--no-js');
+  });
+
+  const pictureIntro = intro?.querySelector<SVGSVGElement>('.intro__svg');
   const pictureMain = mainPage?.querySelector<SVGSVGElement>('.stage__bear');
 
-  const introTitle = intro?.querySelector<HTMLElement>('.intro__title-js');
-  const introSubtitle = intro?.querySelector<HTMLElement>('.intro__subtitle-js');
+  const introTitle = intro?.querySelector<HTMLElement>('.intro__title');
+  const introSubtitle = intro?.querySelector<HTMLElement>('.intro__subtitle');
 
-  const enterBtn = intro?.querySelector<HTMLButtonElement>('.intro__enter-js');
+  const enterBtn = intro?.querySelector<HTMLButtonElement>('.intro__enter');
 
   const isIntroReady = Boolean(intro && introTitle && introSubtitle && enterBtn);
 
@@ -29,12 +34,12 @@ function main(): void {
     sketchifyBear(pictureMain);
   }
 
-  if (isIntroReady && intro && enterBtn && stage) {
-    initIntroLogic(intro, enterBtn, stage);
+  if (isIntroReady && intro && enterBtn) {
+    initIntroLogic(intro, enterBtn);
   }
 }
 
-function initIntroLogic(intro: HTMLElement, enterBtn: HTMLButtonElement, stage: HTMLElement): void {
+function initIntroLogic(intro: HTMLElement, enterBtn: HTMLButtonElement): void {
   const STORAGE_KEY = 'splash-seen';
 
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
@@ -42,31 +47,35 @@ function initIntroLogic(intro: HTMLElement, enterBtn: HTMLButtonElement, stage: 
     return;
   }
 
-  showIntro(intro, stage);
+  showIntro(intro);
 
   enterBtn.addEventListener('click', () => {
     sessionStorage.setItem(STORAGE_KEY, '1');
-    closeIntro(intro, stage);
+    closeIntro(intro);
   });
 
   introAnime();
 }
 
-function showIntro(intro: HTMLElement, stage: HTMLElement) {
+function showIntro(intro: HTMLElement) {
   intro.classList.remove('intro--is-hidden');
-  stage.classList.add('stage--is-hidden');
   document.body.style.overflow = 'hidden';
-  stage.setAttribute('inert', '');
 }
 
-function closeIntro(intro: HTMLElement, stage: HTMLElement): void {
+function closeIntro(intro: HTMLElement): void {
   intro.classList.add('intro--is-hidden');
-  stage.classList.remove('stage--is-hidden');
   document.body.style.overflow = '';
-  stage.removeAttribute('inert');
+
+  if (window.__introStyleRef) {
+    window.__introStyleRef.remove(); // Удаляем блокирующий стиль
+  }
 }
 
 function hideIntro(intro: HTMLElement): void {
+  if (window.__introHiddenStyleRef) {
+    window.__introHiddenStyleRef.remove();
+  }
+
   intro.classList.add('intro--is-hidden');
 }
 

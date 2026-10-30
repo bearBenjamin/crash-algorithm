@@ -5,11 +5,6 @@
   max-width: 1920px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
-  visibility: visible;
-}
-
-.stage--is-hidden {
-  visibility: hidden;
 }
 
 .stage__title {
@@ -108,13 +103,13 @@
   scrollbar-color: #1a1a1a transparent;
 }
 
-.no-js .stage__book-item-list {
-  position: static;
-  max-height: 100%;
-  padding-right: 0;
-  opacity: 1;
-  visibility: visible;
-}
+// .stage__book-item-list--no-js {
+//   position: static;
+//   max-height: 100%;
+//   padding-right: 0;
+//   opacity: 1;
+//   visibility: visible;
+// }
 
 .stage__book-item--is-open .stage__book-item-list {
   opacity: 1;
