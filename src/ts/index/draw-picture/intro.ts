@@ -2,7 +2,7 @@ import { sketchifySvg, type PathOptionsResolver } from '@scripts/utils/sketchify
 import { BASE_OPTIONS, BASE_COLORS } from '@scripts/utils/const';
 import type { Options as RoughOptions } from 'roughjs/bin/core';
 
-function fillOptionsForClass(className: string): Partial<RoughOptions> {
+const fillOptionsForClass = (className: string): Partial<RoughOptions> => {
   switch (className) {
     case 'frame': // небо в окне
       return {
@@ -114,7 +114,7 @@ function fillOptionsForClass(className: string): Partial<RoughOptions> {
     default:
       return {};
   }
-}
+};
 
 const introResolver: PathOptionsResolver = (path) => {
   const className = path.getAttribute('class') || '';
@@ -124,8 +124,8 @@ const introResolver: PathOptionsResolver = (path) => {
   };
 };
 
-function sketchifyIntro(svg: SVGSVGElement): void {
+const sketchifyIntro = (svg: SVGSVGElement): void => {
   sketchifySvg(svg, introResolver);
-}
+};
 
 export { sketchifyIntro };

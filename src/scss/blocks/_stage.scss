@@ -5,6 +5,8 @@
   max-width: 1920px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .stage__title {
@@ -38,7 +40,6 @@
   height: 640px;
   mix-blend-mode: darken;
   isolation: isolate;
-  opacity: 1;
 
   transition: opacity 0.4s ease 0.4s;
 }
@@ -63,10 +64,6 @@
   display: inline-block;
   cursor: pointer;
   user-select: none;
-}
-
-.no-js .stage__book-wrapper {
-  cursor: auto;
 }
 
 .stage__book-name {

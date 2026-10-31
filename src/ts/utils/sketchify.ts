@@ -5,7 +5,7 @@ import type { Options as RoughOptions } from 'roughjs/bin/core';
 // Тип функции-resolver'а: даёшь path → получаешь options
 type PathOptionsResolver = (path: SVGPathElement) => RoughOptions;
 
-function sketchifySvg(svg: SVGSVGElement, resolver: PathOptionsResolver): void {
+const sketchifySvg = (svg: SVGSVGElement, resolver: PathOptionsResolver): void => {
   const rc: RoughSVG = rough.svg(svg);
 
   // Array.from — критично, replaceWith меняет DOM
@@ -26,6 +26,6 @@ function sketchifySvg(svg: SVGSVGElement, resolver: PathOptionsResolver): void {
 
     path.replaceWith(roughPath);
   }
-}
+};
 
 export { type PathOptionsResolver, sketchifySvg };

@@ -1,13 +1,13 @@
 import { sketchifySvg, type PathOptionsResolver } from '@scripts/utils/sketchify';
 import { BASE_OPTIONS, BEAR_COLOR } from '@scripts/utils/const';
 
-function getFillType(path: SVGPathElement): 'black' | 'white' {
+const getFillType = (path: SVGPathElement): 'black' | 'white' => {
   const fill = path.getAttribute('fill') || '';
   if (fill === '#fff') {
     return 'white';
   }
   return 'black';
-}
+};
 
 const bearResolver: PathOptionsResolver = (path) => {
   const fillType = getFillType(path);
@@ -29,8 +29,8 @@ const bearResolver: PathOptionsResolver = (path) => {
       };
 };
 
-function sketchifyBear(svg: SVGSVGElement): void {
+const sketchifyBear = (svg: SVGSVGElement): void => {
   sketchifySvg(svg, bearResolver);
-}
+};
 
 export { sketchifyBear };

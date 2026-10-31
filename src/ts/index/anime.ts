@@ -2,7 +2,7 @@ import { createTimeline } from 'animejs';
 import type { Timeline } from 'animejs';
 import { prefersReducedMotion } from '@scripts/utils/motion';
 
-function introAnime(): void {
+const introAnime = (): void => {
   const rows = document.querySelectorAll<SVGRectElement>('.reveal-row');
 
   if (prefersReducedMotion()) {
@@ -37,6 +37,6 @@ function introAnime(): void {
   tl.add('.intro__title-text', { x: ['-100%', '0%'] }, textStartPosition)
     .add('.intro__subtitle-text', { x: ['100%', '0%'] }, '<')
     .add('.intro__enter', { opacity: [0, 1], duration: 500 }, '<');
-}
+};
 
 export { introAnime };
